@@ -1,0 +1,20 @@
+{
+	"nodes":[
+		{"type":"text","text":"How to choose the right UX research method:\nQuestions to ask.\n-What is the feature?\n-Why was it designed?\n-What Problem to solve/the motivation \n-How did it start?\n-Research goal?\n\nThese are to get the metadata","id":"657c03a01e245ce9","x":-794,"y":-827,"width":314,"height":547},
+		{"type":"text","text":"[[Personas]]:\n1. Gather enough qualitative and qualitative data.\n2. Group them in the Persona Groups.\n","id":"bc939c5032cb868e","x":-240,"y":-584,"width":360,"height":404},
+		{"type":"text","text":"Quantitive:\nNumbers:","id":"eb5b473ae400dd02","x":-5,"y":-827,"width":250,"height":60},
+		{"type":"text","text":"[[Qualitative Research]]\nAnswers the question \"Why\".\n","id":"c8454bb602a84b77","x":-400,"y":-827,"width":280,"height":60},
+		{"type":"text","text":"User Story/Scenario:\nA user fictional story is a fictional one-sentence story told from the persona's point of view. \n\nEg.\nArnold Jones: As a widowed Executive, I want to find a permanent dog walker so my pets get the care they deserve.","id":"d962812412da6ce1","x":-240,"y":-120,"width":360,"height":100},
+		{"type":"text","text":"Competitive Analysis:\n1. What is the goal pf the competitive analysis.\n2. [[Heu]]\n3. Create a spreadsheet with 5-10 competitors.\n4. Call out specific aspects that you want to compare\n5. Research.\n6. Analyze\n7. Summerise","id":"dfa0827bae0f6075","x":-250,"y":115,"width":370,"height":305},
+		{"type":"text","text":"[[UX Audit]] \n","id":"f0b04f9a1ffcf054","x":-250,"y":658,"width":370,"height":282},
+		{"type":"text","text":"Stakeholder Interviews:\n1. What should the product accomplish for the business?\n2. Who are your customers (users)?\n3. How does this project fit with your business strategy\n4. How do you expect to differentiate this product?\n5. What technology decisions have already been made?\n6. Why do costumers use a product like this one ?\n7. If they use a competitor's product instead, whats the reason ?\n\nB2C:\n1. Tell me what makes a good experience?\n2. What would do first?\n3. what would you put off as long as you can?\n4. What do you use it for most often?\n5. can you show me how you do that?\n6. How do you compare this to other products are ","id":"ce0a95923bceec34","x":-400,"y":-1860,"width":645,"height":360},
+		{"type":"text","text":"User Interviews and/or research:","id":"c51dbbf3302f2cf7","x":-400,"y":-1200,"width":645,"height":160},
+		{"type":"text","text":"Competitor Review","id":"f669bb85f7152dc7","x":-400,"y":-1420,"width":645,"height":140},
+		{"type":"text","text":"Existing Product Audit:","id":"4a880114cecf9057","x":-400,"y":-1004,"width":645,"height":84}
+	],
+	"edges":[
+		{"id":"147a65f168527a46","fromNode":"eb5b473ae400dd02","fromSide":"bottom","toNode":"bc939c5032cb868e","toSide":"top"},
+		{"id":"c65ec7c3c5b1908c","fromNode":"c8454bb602a84b77","fromSide":"bottom","toNode":"bc939c5032cb868e","toSide":"top"},
+		{"id":"b4f253705e6338e1","fromNode":"bc939c5032cb868e","fromSide":"bottom","toNode":"d962812412da6ce1","toSide":"top"}
+	]
+}

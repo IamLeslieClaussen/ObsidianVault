@@ -1,0 +1,10 @@
+- The rise of lonliness and para-social relationships. 
+- Stillness - 
+- Do we have to care? Is caring the new goldmine How much is your care worth?
+- Data the new Gold
+- Is God dead?
+- the real you ?
+- Fake it till you make it\
+- Representation matters
+- Is boredom good for you?
+- Is God dead?

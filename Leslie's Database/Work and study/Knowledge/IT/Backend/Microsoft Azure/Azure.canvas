@@ -1,0 +1,28 @@
+{
+	"nodes":[
+		{"id":"06702d3c38048570","x":-492,"y":-120,"width":314,"height":54,"type":"file","file":"Work and study/Knowledge/IT/Microsoft Azure/SQL Data services.md"},
+		{"id":"3275e3db2628854d","x":-178,"y":527,"width":369,"height":60,"type":"text","text":""},
+		{"id":"cd34f8fb06c9cdc6","x":427,"y":-905,"width":290,"height":711,"type":"group","label":"Pass Services"},
+		{"id":"0dd846875b3c577f","x":424,"y":-1279,"width":293,"height":220,"type":"group","label":"Purchasing Models"},
+		{"id":"a898655fba68e18d","x":444,"y":-1259,"width":250,"height":60,"type":"text","text":"[[DTU]]: Single metric that combines CPU, Momory performance and I/0.\nGuarantees are min level of compute , I/o and resources.\nSimplifies data resources provisioning by giving 2 levers, computers performance and maximum data storage to adjust. Only available with Single Instance databases, and elastic Pool.\nFor cmrs unaware of their requirement and want a simple and pre-configured way."},
+		{"id":"0742dcc9e743fb8b","x":444,"y":-879,"width":250,"height":284,"type":"text","text":"[[Managed Instance]]:\n-The clostest thing to Iaas.\nSupports most of the on Premise Sql Instance services. \n-Allows groups of databases to be used together.\n-Each managed instance has access to its own resources\n-Build in back-ups, patching and recovery\n-It has an IP in the Azure virtual network\n-up to 8 TB\n-Each Database has access to its own \n1.Storage\n2.Memory\n3.Compute"},
+		{"id":"59eb52a474491853","x":444,"y":-564,"width":250,"height":216,"type":"text","text":"[[Elastic Pool]]:\n-A collection of databases that share a set of resources such as compute and memory.\n-Fixed amount of resources are shared among databases in the Pool.\n-Can be very cost effective method for managing several databases or building applications that can take advantage of these features. "},
+		{"id":"15724cd9b2dac475","x":444,"y":-316,"width":250,"height":60,"type":"text","text":""},
+		{"id":"18c2b114671ca6df","x":444,"y":-1172,"width":250,"height":85,"type":"text","text":"[[vCore]]:  Best for Consumers who need flexibility and control. \n-Allows you to use Azure Hybrid benefit to reduce cost. Available for all 3 deployment opttions.\nMicrosoft advises vCore for maximum flexibility. Comes with the existing SQL server linces to reduce cost."},
+		{"id":"9b1bd449d4839b55","x":-527,"y":-937,"width":349,"height":142,"type":"text","text":"[[Hyperscale]]:\nfor cmrs with Databases  up to 100tb.\nOnly available for VCore purchasing.\nNot compatible with SQL managed instances."},
+		{"id":"ac72acbc5162def3","x":-527,"y":-1125,"width":349,"height":144,"type":"text","text":"[[Business critical]]:\nFor high performance Apps with low latency\n1-ms read\n2-ms writing.\nAvailable for all deployent options \n"},
+		{"id":"637933ff7a076448","x":-527,"y":-1321,"width":349,"height":149,"type":"text","text":"[[General Purpose]] : \nAimed at generic workloads.\n5ms read latency and 10ms write latency.\nAvailable for all deployment options.\n"},
+		{"id":"84f620aec582adb5","x":-547,"y":-1341,"width":389,"height":792,"type":"group","label":"Service Tiers"},
+		{"id":"a145dbf1eea3b603","x":-527,"y":-751,"width":349,"height":187,"type":"text","text":"[[Serverless Compute]]:\nonly pay what you use.\n-Single databases with intermittend and unpredictable usage.\n-Unknown  database usage pattern history.\n-cmrs that want to offload the scaling responsibilites\n-Cannot autoresume when in a paused state.\n"},
+		{"id":"55a7d2c55107f490","x":-49,"y":-564,"width":369,"height":213,"type":"file","file":"Work and study/Knowledge/IT/Microsoft Azure/SQL Database (Paas).md"}
+	],
+	"edges":[
+		{"id":"dd06dd47a7dbb04a","fromNode":"06702d3c38048570","fromSide":"right","toNode":"55a7d2c55107f490","toSide":"bottom"},
+		{"id":"64008ef97bd140bc","fromNode":"3275e3db2628854d","fromSide":"top","toNode":"06702d3c38048570","toSide":"right"},
+		{"id":"cc69ccdb12e1ce6f","fromNode":"55a7d2c55107f490","fromSide":"right","toNode":"0742dcc9e743fb8b","toSide":"left"},
+		{"id":"a31ac8c1dcf797e0","fromNode":"55a7d2c55107f490","fromSide":"right","toNode":"59eb52a474491853","toSide":"left"},
+		{"id":"bfbd32752a9c72b4","fromNode":"55a7d2c55107f490","fromSide":"right","toNode":"15724cd9b2dac475","toSide":"left"},
+		{"id":"f82c9ebda1ea519a","fromNode":"cd34f8fb06c9cdc6","fromSide":"top","toNode":"0dd846875b3c577f","toSide":"bottom"},
+		{"id":"3e2a1614e45ed191","fromNode":"06702d3c38048570","fromSide":"top","toNode":"84f620aec582adb5","toSide":"bottom"}
+	]
+}

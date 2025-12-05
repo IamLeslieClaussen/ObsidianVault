@@ -1,0 +1,14 @@
+{
+	"nodes":[
+		{"id":"9b5bc0de9348e8f5","x":-60,"y":-520,"width":160,"height":50,"type":"text","text":"Azure Storage"},
+		{"id":"967a5cbf8ab3a24f","x":-280,"y":-440,"width":140,"height":60,"type":"text","text":"Structured\n"},
+		{"id":"f247ec9e33da84ed","x":-60,"y":-435,"width":180,"height":50,"type":"text","text":"Semi-Structured"},
+		{"id":"52fe3fc8af64c2cc","x":160,"y":-435,"width":160,"height":50,"type":"text","text":"Unstructured "},
+		{"id":"58078d004ddf7484","x":-791,"y":-346,"width":250,"height":406,"type":"text","text":"3 "}
+	],
+	"edges":[
+		{"id":"d07bc62f76a642a9","fromNode":"9b5bc0de9348e8f5","fromSide":"left","toNode":"967a5cbf8ab3a24f","toSide":"top","toEnd":"none"},
+		{"id":"4858b83d8147836c","fromNode":"9b5bc0de9348e8f5","fromSide":"bottom","toNode":"f247ec9e33da84ed","toSide":"top"},
+		{"id":"2d322aca09cd0a00","fromNode":"9b5bc0de9348e8f5","fromSide":"right","toNode":"52fe3fc8af64c2cc","toSide":"top"}
+	]
+}

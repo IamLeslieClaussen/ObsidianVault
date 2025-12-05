@@ -1,0 +1,1 @@
+We [[initialize]] A[[ variable]] to None if we do not wish to give it any value. This is convinient because one will never end up with  an unitialized variable.

@@ -1,0 +1,240 @@
+{
+  "main": {
+    "id": "1eda83663fd7bac5",
+    "type": "split",
+    "children": [
+      {
+        "id": "56c6b734e0430d0b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c24e26f975a37ede",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/notes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "notes"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "733b415fdb9146e9",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ba7cc6b7ffdf348",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "070a1a02cc045776",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "speec",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "e349dd4b0b8f6533",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "46cfbcee8f992092",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          },
+          {
+            "id": "21451c3b6dc0701b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Work and study/Knowledge/IT/Web development/CSS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CSS"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 474.5
+  },
+  "right": {
+    "id": "27efa7b495d251b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "78198b7ccdc0698d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "322c84d7d4ecd10c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Work and study/Knowledge/IT/Web development/Javascript/Projects/SASS.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for SASS"
+            }
+          },
+          {
+            "id": "2cad0f55860c5703",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Work and study/Knowledge/IT/XR Design/Roadmap.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "lucide-ghost",
+              "title": "outgoing-link"
+            }
+          },
+          {
+            "id": "d826f92459362c0e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-ghost",
+              "title": "tag"
+            }
+          },
+          {
+            "id": "5e8247c0599a78be",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Work and study/Knowledge/IT/XR Design/Roadmap.md"
+              },
+              "icon": "lucide-ghost",
+              "title": "outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "markdown-importer:Open format converter": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "workspaces:Manage workspace layouts": false,
+      "obsidian-kanban:Create new board": false
+    }
+  },
+  "active": "c24e26f975a37ede",
+  "lastOpenFiles": [
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/fsevents.d.ts",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/fsevents.node",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/package.json",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/fsevents.js",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents/LICENSE",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@esbuild/aix-ppc64",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@esbuild/android-arm64",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@rollup/rollup-android-arm-eabi",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@rollup/rollup-win32-x64-msvc",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/fsevents",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@rollup/rollup-linux-x64-gnu",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/readme.md",
+    "Work and study/Knowledge/IT/Excel/Pivot Table.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_final/readme.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@esbuild/darwin-x64/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/source-map-js/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/esbuild/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/esbuild/LICENSE.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/rollup/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/rollup/LICENSE.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/vite/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/vite/LICENSE.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/picocolors/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/src/nodes/materialx/DISCLAIMER.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/examples/jsm/libs/basis/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/examples/jsm/libs/draco/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/examples/fonts/ttf/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/examples/fonts/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/three/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@rollup/rollup-darwin-x64/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/postcss/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/nanoid/README.md",
+    "Work and study/Knowledge/IT/Frontend/Three-js/7_camera_and_renderloop/camera_and_renderloop_starter/node_modules/@types/estree/README.md",
+    "Work and study/Knowledge/IT/Excel/Functions.md",
+    "Work and study/Knowledge/IT/Excel/Excel revision and Important links.md",
+    "Work and study/Knowledge/IT/Backend/Microsoft Azure/Pasted image 20221025151510.png",
+    "Work and study/Knowledge/IT/Backend/Microsoft Azure/Azure.canvas",
+    "Work and study/Knowledge/IT/Untitled.canvas",
+    "Work and study/Knowledge/IT/Backend/Node.js/Routing/Routing.canvas",
+    "Stored images/Pasted image 20230131051758.png",
+    "Storage/Untitled.canvas",
+    "Storage/Azure Storage.canvas",
+    "Storage/Untitled 1.canvas",
+    "Stored images/Pasted image 20230131051701.png",
+    "Personal/Documents/Letters/Bank Letters/Santander Mobile Banking (1).jpeg",
+    "Personal/Documents/Letters/Bank Letters/Santander Mobile Banking.jpeg",
+    "Work and study/Knowledge/IT/Frontend/UX Design/Research Process.canvas",
+    "Personal/Documents/Letters/Bank Letters/Santander Pin.jpeg",
+    "Personal/Documents/Letters/Law Enforcement/GetImage.jpeg",
+    "Work and study/Knowledge/IT/Frontend/Figma and webflow workprocess/Untitled.canvas",
+    "Work and study/Webdesing and Development Roadmap.canvas"
+  ]
+}

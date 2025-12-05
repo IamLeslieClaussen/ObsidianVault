@@ -1,0 +1,4 @@
+-Most suited for modern cloud applications that require the latest stable SQL  Sever features. 
+-Very quick to deploy.
+-99.99% availabilty is guarannteed.
+-Build in Back-ups,  Recovery and Patches are in build features.

@@ -1,0 +1,78 @@
+{
+  "main": {
+    "id": "5082339f34226b5b",
+    "type": "split",
+    "children": [
+      {
+        "id": "1de66eacefc13847",
+        "type": "leaf",
+        "state": {
+          "type": "graph",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "6b09ce87d77a9db0",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "62a49b5646fb2c2f",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {}
+        }
+      },
+      {
+        "id": "f47e3c056ab38cc2",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "right": {
+    "id": "1fcc9168c1b8b277",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "dfc153b61dcb0215",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "active": "1de66eacefc13847",
+  "lastOpenFiles": [
+    "Personal/Vital Items/Toiletries.md",
+    "Bedroom stuff.md",
+    "Clothing.md",
+    "Toiletries.md",
+    "Notes/Daily Notes/2022-05-19.md"
+  ]
+}
