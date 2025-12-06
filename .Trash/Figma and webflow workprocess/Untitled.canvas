@@ -1,6 +1,0 @@
-{
-	"nodes":[
-		{"id":"b9a0ef8fc4d4800d","x":-125,"y":-30,"width":485,"height":190,"type":"text","text":"###Project Brief\n1. What are we building?\n2. What is the goal?\n3. What is the target audience?\n4. What is the desired look and feel of the website?\n5. Any desired functionality?"}
-	],
-	"edges":[]
-}

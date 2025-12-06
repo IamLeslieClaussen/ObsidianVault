@@ -1,3 +1,0 @@
-
-The backend folder structure
-
