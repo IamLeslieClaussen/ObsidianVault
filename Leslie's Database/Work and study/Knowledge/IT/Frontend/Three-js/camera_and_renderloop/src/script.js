@@ -11,6 +11,7 @@ const cubeMesh = new THREE.Mesh(
   cubeGeometry,
   cubeMaterial
 )
+
 scene.add(cubeMesh)
 
 // initialize the camera
@@ -28,3 +29,6 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.render(scene, camera)
+
+
+
