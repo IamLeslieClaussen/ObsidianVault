@@ -38,3 +38,6 @@ camera.position.z = 5
 ```
 
 [[near_clipping_plane]]: This defines the closest distance from the camera where the object will be rendered
+
+
+[[orthographic_camera]]: renders the scene without perspective - objects appear the same size regardless of the distance from the camera.
