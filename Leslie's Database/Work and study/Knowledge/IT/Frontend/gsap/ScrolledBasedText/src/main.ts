@@ -45,4 +45,52 @@ return (phaseProgress - startTime) / duration;
 
 }
 
+
+const animateBlock = (outBlock, inBlock, phaseProgress) => {
+    outBlock.words.forEach((word, i) => {
+        const progress = getWordProgress(phaseProgress, i, outBlock, words.length);
+        gsap.set(word, {yPercent: progress * 100});
+    })
+
+    inBlock.words.forEach((word, i) => {
+        const progress = getWordProgress(phaseProgress, i, inBlock.words.length);
+        gsap.set(word, {yPercent: progress * 100} );
+
+    })
+}
+
+const indicator = document.querySelector(".scroll-indicator")
+
+const marqueeTrack = document.querySelector(".marquee-track");
+const items = gsap.utils.toArray(".marquee-item");
+items.forEach((item) => marqueeTrack.appendChild(item.cloneNode(true)));
+
+let marqueePosition = 0;
+let smoothVelocity = 0;
+
+gsap.ticker.add(() => {
+    smoothVelocity += (targetVelocity - smoothVelocity) * 0.5;
+
+    const baseSpeed = 0.45;
+    const speed = baseSpeed + smoothVelocity * 9;
+
+    marqueePosition -= speed;
+
+    const trackWidth = marqueeTrack.scrollWidth / 2;
+
+    if(marqueePosition <= -trackWidth) {
+        marqueePosition = 0
+    }
+
+    gsap.set(marqueeTrack, {x: marqueePosition});
+
+    targetVelocity *= 0.9;
+})
+
+scrollTrigger.create({
+    trigger: ".container",
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => 
+})
 })
