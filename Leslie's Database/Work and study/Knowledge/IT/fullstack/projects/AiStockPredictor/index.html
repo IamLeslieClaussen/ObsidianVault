@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>aistockpredictor</title>
+  </head>
+  <body>
+    <header class="flex justify-center p-4 max-w-[500px] m-auto">
+      <P>Leslies Stock prediction</P>
+    </header>
+    <main class="flex justify-center flex-col">
+      <section class="flex flex-col justify-around items-center h-[350px] my-[1.5em] mx-[2em] leading-[1.5em]">
+        <form class="w-[360px] flex flex-col items-center">
+          <label for="ticker-input" class="text-center p-[0.43em] text-[15px] mb-[1em] w-[80%]">Add 3 tickers below to get super accurate stock predictions report</label>
+          <div class="flex w-[70%] border-2 border-black">
+            <input type="text" placeholder="MSFT" id="ticker-input" class="p-[1em] border-0 flex-1">
+            <button class="border-0 p-[1em]">
+              <img src="Leslie's Database/Work and study/Knowledge/IT/fullstack/projects/AiStockPredictor/public/assets/images/add.svg" alt="">
+            </button>
+          </div>
+        </form>
+        <p>
+          your tickers:
+        </p>
+        <button disabled>
+          Generate Report
+        </button>
+        <p>Always correct 15% of the time</p>
+      </section>
+      <section class="flex-col justify-around h-[400px] text-center">
+        <img src="Leslie's Database/Work and study/Knowledge/IT/fullstack/projects/AiStockPredictor/public/assets/images/loader.svg" alt="loading">
+        <div>Quering stocks API</div>
+      </section>
+      <section class="flex flex-col justify-around items-center h-[350px] my-[1.5em] mx-[2em] leading-[1.5em]">
+        <h2 class="text-center font-normal mt-[-26px] bg-[#f6f6f6] px-0 py-[18px] mb-0 text-[18px]">
+          Your report is ready!
+        </h2>
+      </section>
+    </main>
+    <footer>
+      &copy; This is not real financial advice!
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
