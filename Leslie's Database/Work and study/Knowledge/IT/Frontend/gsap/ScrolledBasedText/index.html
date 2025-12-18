@@ -8,13 +8,17 @@
     <title>scrollbasedtexttransition</title>
   </head>
   <body class="bg-[#0f0f0f] text-white font-sans">
-    <nav class="fixed top-0 left-0 p-8 text-white w-[45%] flex justify-between z-50 max-[1000px]:flex-col-reverse">
+    <nav
+      class="fixed top-0 left-0 p-8 text-white w-[45%] flex justify-between z-50 max-[1000px]:flex-col-reverse"
+    >
       <p class="uppercase text-sm leading-none">/ CG1911125</p>
       <p class="uppercase text-sm leading-none">Experiment_507</p>
     </nav>
-    <div class="relative w-full h-[600vh]">
-      <section class="fixed top-0 left-0 w-full h-screen overflow-hidden">
-        <div class="about-copy absolute left-0 top-1/2 transform -translate-y-1/2 w-full p-8 flex gap-16 max-[1000px]:flex-col max-[1000px]:top-80">
+    <div class="relative w-full h-[600vh] container">
+      <section class="fixed top-0 left-0 w-full h-screen overflow-hidden hero">
+        <div
+          class="about-copy absolute left-0 top-1/2 transform -translate-y-1/2 w-full p-8 flex gap-16 max-[1000px]:flex-col max-[1000px]:top-80"
+        >
           <div class="copy-block">
             <p class="text-3xl font-[450] tracking-[-0.0025rem] leading-[1.2]">
               I work in portrait photograghy with a focus on light, tone and
@@ -35,7 +39,9 @@
           </div>
         </div>
 
-        <div class="absolute left-0 bottom-8 w-full leading-[30] overflow-hidden flex">
+        <div
+          class="absolute left-0 bottom-8 w-full leading-[30] overflow-hidden flex"
+        >
           <div class="marquee-track flex gap-3 will-change-transform">
             <div class="w-40 h-24 rounded-sm overflow-hidden">
               <img src="/src/assets/images/img_1.jpg" />
@@ -70,7 +76,9 @@
           </div>
         </div>
 
-        <div class=".scroll-indicator absolute w-40 h-[0.1rem] top-8 right-8 bg-[#2f2f2f]"></div>
+        <div
+          class="scroll-indicator absolute w-40 h-[0.1rem] top-8 right-8 bg-[#2f2f2f]"
+        ></div>
       </section>
     </div>
     <script type="module" src="/src/main.ts"></script>
