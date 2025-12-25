@@ -27,14 +27,21 @@ body {
   border-color: #dac0ae;
 }
 
-.answer-btn.correct {
+.correct {
   background-color: #e6fff0;
   border-color: #a3f0c4;
   color: #28a745;
 }
 
-.answer-btn.incorrect {
+.incorrect {
   background-color: #fff0f0;
   border-color: #ffbdbd;
   color: #dc3545;
+}
+
+#progress-bar {
+  transition: width 0.3s;
+  min-width: 0;
+  display: block;
+ 
 }
