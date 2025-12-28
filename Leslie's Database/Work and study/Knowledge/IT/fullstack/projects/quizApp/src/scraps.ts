@@ -1,9 +1,4 @@
 import "./style.css";
-import {
-  calculatePercentage,
-  isAnswerCorrect,
-  getResultMessage,
-} from "./quizUtils";
 
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
@@ -90,20 +85,24 @@ document.addEventListener("DOMContentLoaded", () => {
     quizScreen.classList.remove("hidden");
     scoreSpan.innerText = "0";
 
-    showQuestions();
+    showQuestion();
   };
 
-  startButton.addEventListener("click", startQuiz);
-  restartButton.addEventListener("click", restartButton);
-
-  const showQuestions = () => {
+  const showQuestion = () => {
+    // clear previous answers
     answersDisabled = false;
     answersContainer.innerHTML = "";
+    //scoreSpan.innerText = '0';
 
     const currentQuestion = quizQuestions[currentQuestionIndex];
     questionHeader.innerHTML = currentQuestion.questions;
 
     currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
+
+    const progressPercent = (currentQuestionIndex + 1) / quizQuestions.length;
+    progressBar.style.width = `${progressPercent * 100}%`;
+
+    console.log("Progress width:", progressBar.style.width);
 
     currentQuestion.answers.forEach((answer) => {
       const answerButton = document.createElement("button");
@@ -113,21 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
       answerButton.dataset.correct = answer.correct.toString();
       answersContainer.appendChild(answerButton);
 
+      // Add event listener so selectAnswer is called
       answerButton.addEventListener("click", selectAnswer);
     });
   };
 
   function selectAnswer(event: MouseEvent) {
-    console.log("answer Clicked");
-
+    console.log("Answer clicked");
+    // optimization check
     if (answersDisabled) return;
 
     answersDisabled = true;
 
     const selectedButton = event.target as HTMLButtonElement;
-    const selectedText = selectedButton.textContent || "";
-    const currentAnswers = quizQuestions[currentQuestionIndex].answers;
-    const isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+    const isCorrect = selectedButton.dataset.correct === "true";
 
     Array.from(answersContainer.children).forEach((button) => {
       if (button.dataset.correct === "true") {
@@ -142,12 +140,12 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreSpan.textContent = score.toString();
     }
 
-    //check if there are more questions
     setTimeout(() => {
       currentQuestionIndex++;
 
+      //check if there are more questions
       if (currentQuestionIndex < quizQuestions.length) {
-        showQuestions();
+        showQuestion();
       } else {
         showResults();
       }
@@ -161,12 +159,20 @@ document.addEventListener("DOMContentLoaded", () => {
     finalScore.textContent = score.toString();
     maxScore.textContent = quizQuestions.length.toString();
 
-    const percentage = calculatePercentage(score, quizQuestions.length);
+    const percentage = (score / quizQuestions.length) * 100;
+    console.log(percentage);
 
-    finalMessage.textContent = getResultMessage(percentage);
+    function selectAnswer(event: MouseEvent) {
+      console.log("answer Clicked");
+
+      if (answersDisabled) return;
+
+      answersDisabled = true;
+    }
   }
 
   function restartQuiz() {
+    // reset variables
     currentQuestionIndex = 0;
     score = 0;
 
@@ -174,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startScreen.classList.remove("hidden");
   }
 
+  // event listeners
   startButton.addEventListener("click", startQuiz);
   restartButton.addEventListener("click", restartQuiz);
 });
