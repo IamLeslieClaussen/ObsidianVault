@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const finalMessage = document.getElementById(
     "final-message"
   ) as HTMLDivElement;
+  const timerSpan = document.getElementById('timer') as HTMLSpanElement;
 
   const quizQuestions = [
     {
@@ -82,8 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // reseting variables
   let currentQuestionIndex = 0;
   let score = 0;
-
   let answersDisabled = false;
+  let timerInterval: number | null = null;
+  let timeRemaining = 10;
 
   const startQuiz = () => {
     startScreen.classList.add("hidden");
@@ -95,6 +97,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startButton.addEventListener("click", startQuiz);
   restartButton.addEventListener("click", restartButton);
+
+  // set Timer
+
+  const startTimer = () => {
+    timeRemaining = 10;
+    updateTimerDisplay();
+
+    timerInterval = window.setInterval(() => {
+      timeRemaining--;
+      updateTimerDisplay();
+
+      if(timeRemaining <= 0){
+        clearInterval(timerInterval!);
+        handleTimeout();
+      }
+    }, 1000);
+  };
+
+  const updateTimerDisplay = () => {
+    timerSpan.textContent = `ti`
+
+
+
 
   const showQuestions = () => {
     answersDisabled = false;
