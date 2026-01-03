@@ -6,8 +6,7 @@ import {
 } from "./quizUtils";
 
 describe("calculatePercentage", () => {
-  it('returns the correct percentage', () => {
-
+  it("returns the correct percentage", () => {
     //Arrange
     const score = 3;
     const total = 5;
@@ -17,33 +16,32 @@ describe("calculatePercentage", () => {
 
     //Assert
     expect(result).toBe(60);
-  })
+  });
 });
 
-describe('isAnswerCorrect', () => {
-  it('returns true for correct answer', () => {
+describe("isAnswerCorrect", () => {
+  it("returns true for correct answer", () => {
     //Arrange
     const answers = [
-      {text: "A", correct: false},
-      {text: "A", correct: true},
-
+      { text: "A", correct: false },
+      { text: "B", correct: true },
     ];
 
     //Act
-    const result = isAnswerCorrect('B', answers);
+    const result = isAnswerCorrect("B", answers);
 
     //Assert
-    expect(result).toBe(true)
-  })
-})
+    expect(result).toBe(true);
+  });
+});
 
-describe('getResultMessage', () =>{
-  it('returns "great job" for 100%', () =>{
+describe("getResultMessage", () => {
+  it("returns 'great job' for 100%", () => {
     //Arrange and Act
 
     const result = getResultMessage(100);
 
-    // Assert
-    expect(result).toBe('great job');
-  })
-})
+    //Assert
+    expect(result).toBe("great job");
+  });
+});

@@ -1,10 +1,22 @@
 export function isAnswerCorrect(
-    selected: string, 
-    answers: {text: string; correct: boolean}[],
+    selected: string,
+    answers: {text: string; correct: boolean}[]
 ): boolean {
     const found = answers.find((answer) => answer.text === selected);
-    if (found) {
-        return found.correct;
-    }
-    return false;
+    return found? found.correct : false
+}
+
+export function calculatePercentage(score: number, total: number){
+    if(total === 0) return 0;
+    return (score / total) * 100;
+}
+
+export function getResultMessage(percentage: number){
+    if (percentage === 100) {
+    return "great job";
+  } else if (percentage >= 80) {
+    return "well done";
+  } else {
+    return "keep practicing";
+  }
 }
