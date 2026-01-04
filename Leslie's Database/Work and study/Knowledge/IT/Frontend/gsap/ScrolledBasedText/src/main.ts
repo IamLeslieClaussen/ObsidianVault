@@ -6,6 +6,7 @@ import Lenis from "lenis";
 document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
+  //initialize Lenis
   const lenis = new Lenis();
 
   let targetVelocity = 0;
@@ -18,14 +19,14 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
-  const textBlocks = gsap.utils.toArray(".copy-block p");
+  const textBlocks = gsap.utils.toArray(".copy-block p") as HTMLElement[];
 
-  const splitInstances = textBlocks.map((block) => {
+  const splitInstances: any[] = textBlocks.map((block) => {
     return SplitText.create(block, { type: "words", mask: "words" });
   });
 
-  gsap.set(splitInstances[1].words, { yPercent: 100 });
-  gsap.set(splitInstances[2].words, { yPercent: 100 });
+  gsap.set(splitInstances[1], { yPercent: 100 });
+  gsap.set(splitInstances[2], { yPercent: 100 });
 
   const overlapCount = 3;
 
@@ -43,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const endTime = startTime + (overlapCount / totalWords) * scale;
     const duration = endTime - startTime;
 
-    if (phaseProgress <= startTime) return 0;
     if (phaseProgress >= endTime) return 1;
+    if (phaseProgress <= startTime) return 0;
     return (phaseProgress - startTime) / duration;
   };
 
@@ -53,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const progress = getWordProgress(phaseProgress, i, outBlock.words.length);
       gsap.set(word, { yPercent: progress * 100 });
     });
-
     inBlock.words.forEach((word, i) => {
       const progress = getWordProgress(phaseProgress, i, inBlock.words.length);
       gsap.set(word, { yPercent: 100 - progress * 100 });
@@ -62,9 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const indicator = document.querySelector(".scroll-indicator");
 
-  const marqueeTrack = document.querySelector(".marquee-track");
+  const marqueeTrack = document.querySelector("marquee-track");
   const items = gsap.utils.toArray(".marquee-item");
-
   items.forEach((item) => marqueeTrack?.appendChild(item.cloneNode(true)));
 
   let marqueePosition = 0;
@@ -78,8 +77,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     marqueePosition -= speed;
 
-    const trackWidth = marqueeTrack.scrollWidth / 2;
-
-    if(marqueePosition <= )
+    const trackWidth = marqueeTrack?.scrollWidth / 2;
+    if (marqueePosition <= -trackWidth) {
+      marqueePosition = 0;
+    }
   });
+
+  ScrollTrigger.create({
+    trigger: "body",
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+      const scrollProgress = self.progress;
+      console.log("Scroll progress", scrollProgress);
+
+      gsap.set(indicator, { "--progress": scrollProgress });
+
+      if (scrollProgress <= 0.5) {
+        const phase1 = scrollProgress / 0.5;
+        animatedBlock(splitInstances[0], splitInstances[1], phase1);
+
+        gsap.set(splitInstances[2].words, { yPercent: 100 });
+      } else {
+        const phase2 = (scrollProgress - 0.5) / 0.5;
+        console.log("phase 2", phase2);
+
+        gsap.set(splitInstances[0].words, { yPercent: 100 });
+        gsap.set(splitInstances[1].words, { yPercent: 0 });
+        animatedBlock(splitInstances[1], splitInstances[2], phase2);
+      }
+    },
+  });
+
+  ScrollTrigger.refresh;
 });
