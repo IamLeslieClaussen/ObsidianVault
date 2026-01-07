@@ -1,4 +1,4 @@
-import { calculatePercentage, getResultMessage, isAnswerCorrect } from './quizUtilsScraps';
+import { calculatePercentage, getResultMessage, isAnswerCorrect, TimerManager } from './quizUtils';
 import './style.css';
 
 //Dom elements
@@ -76,73 +76,26 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     }
   ]
-
  // reset variables 
+
  let score = 0;
  let currentQuestionIndex = 0;
- let timeRemaining = 10;
- let answersDisabled = false;
- let timerInterval: number | null = null;
+ let answersDisabled: boolean = false;
+ const timerManager = new TimerManager('timer');
 
  const startQuiz = () => {
   startScreen.classList.add('hidden');
   quizScreen.classList.remove('hidden');
-  scoreSpan.textContent = score.toString();
+  scoreSpan.innerText = '0';
 
   showQuestions();
-
  }
 
- // set timer
-
- const updateTimerDisplay = () => {
-  timerSpan.textContent = `${timeRemaining}`;
- }
-
- const startTimer = () => {
-  timeRemaining = 10;
-  updateTimerDisplay();
-
-  timerInterval = window.setInterval(() => {
-    timeRemaining--;
-    updateTimerDisplay();
-
-    if(timeRemaining <= 0){
-      clearInterval(timerInterval!);    
-      handleTimeout();
-    }
-  }, 1000)
- };
-
- // handletimeOut
-
- const handleTimeout = () => {
-  answersDisabled = true;
-
-  Array.from(answersContainer.children).forEach((button) => {
-    if(button.dataset.correct === 'true'){
-      button.classList.add('correct');
-    }
-  })
-
-  // Move to next question after a showing correct answer
-  setTimeout(() => {
-    currentQuestionIndex++;
-
-    if(currentQuestionIndex < quizQuestions.length){
-      showQuestions();
-    } else {
-      showResults();
-    }
-  }, 1000)
- }
-
- function showQuestions(){
+ const showQuestions = () => {
   answersDisabled = false;
-  answersContainer.innerHTML = "";
+  answersContainer.innerHTML = '';
 
-  // startTimer
-  startTimer();
+  timerManager.startTimer(10);
 
   const currentQuestion = quizQuestions[currentQuestionIndex];
   questionHeader.innerHTML = currentQuestion.questions;
@@ -150,68 +103,83 @@ document.addEventListener("DOMContentLoaded", () => {
   currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
 
   currentQuestion.answers.forEach((answer) => {
-    const answerButton = document.createElement('button') as HTMLButtonElement;
+    const answerButton = document.createElement('button');
     answerButton.textContent = answer.text;
     answerButton.classList.add('answer-btn');
 
     answerButton.dataset.correct = answer.correct.toString();
     answersContainer.appendChild(answerButton);
 
-
-
-    answerButton.addEventListener('click', selectAnswer)
-  })
- }
+    answerButton.addEventListener('click', selectAnswer);
+  });
+ };
 
  function selectAnswer(event: MouseEvent){
-  console.log('answer clicked')
+  console.log('answer Clicked')
 
   if(answersDisabled) return;
 
   answersDisabled = true;
 
-  //clear the timer
-  if(timerInterval){
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
+  // stop the timer
+  timerManager.stopTimer();
 
   const selectedButton = event.target as HTMLButtonElement;
-  const selectedText = selectedButton.textContent || "";
+  const selectedText = selectedButton.textContent || '';
   const currentAnswers = quizQuestions[currentQuestionIndex].answers;
   const isCorrect = isAnswerCorrect(selectedText, currentAnswers);
 
   Array.from(answersContainer.children).forEach((button) => {
     if(button.dataset.correct === 'true'){
-      button.classList.add('correct')
-    } else (button === selectedButton) {
-      button.classList.add('incorrect')
+      button.classList.add('correct');
+    } else if (button === selectedButton) {
+      button.classList.add('incorrect');
     }
   });
 
   if(isCorrect){
     score++;
-    scoreSpan.textContent = score.toString();
+    scoreSpan.innerText = score.toString();
   }
 
+  // check if there are more questions
   setTimeout(() => {
     currentQuestionIndex++;
 
     if(currentQuestionIndex < quizQuestions.length){
       showQuestions()
     } else {
-      showResults()
+      showResults();
     }
   }, 1000)
-
  }
 
+ function showResults() {
+  timerManager.stopTimer();
 
+  quizScreen.classList.add('hidden');
+  endScreen.classList.remove('hidden');
 
+  finalScore.textContent = score.toString();
+  maxScore.textContent = quizQuestions.length.toString();
 
- startButton.addEventListener('click', startQuiz)
+  const percentage = calculatePercentage(score, quizQuestions.length);
 
+  finalMessage.textContent = getResultMessage(percentage);
+ }
 
+ function restartQuiz() {
+  timerManager.stopTimer();
+  currentQuestionIndex = 0;
+  score = 0;
+  answersDisabled = false;
+  scoreSpan.innerText = '0';
+
+  endScreen.classList.add('hidden');
+  quizScreen.classList.add('hidden');
+  startScreen.classList.remove('hidden');
+ }
+
+ startButton.addEventListener('click', startQuiz);
+ restartButton.addEventListener('click', restartQuiz);
 });
-  
-

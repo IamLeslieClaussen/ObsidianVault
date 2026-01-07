@@ -197,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
         button.classList.add("incorrect");
       }
     });
-
     if (isCorrect) {
       score++;
       scoreSpan.textContent = score.toString();

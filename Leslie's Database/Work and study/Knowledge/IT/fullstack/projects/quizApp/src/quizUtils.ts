@@ -20,3 +20,63 @@ export function getResultMessage(percentage: number){
     return "keep practicing";
   }
 }
+
+// Timer Management
+export interface TimerState {
+  timeRemaining: number;
+  timerInterval: number | null;
+}
+
+export class TimerManager {
+  private state: TimerState = {
+    timeRemaining: 10,
+    timerInterval: null
+  };
+
+  private timerSpan: HTMLSpanElement;
+  private onTimeoutCallback: (() => void) | null = null;
+
+  constructor(timerElementId: string) {
+    this.timerSpan = document.getElementById(timerElementId) as HTMLSpanElement;
+  }
+
+  setOnTimeoutCallback(callback: () => void): void {
+    this.onTimeoutCallback = callback;
+  }
+
+  private updateDisplay(): void {
+    this.timerSpan.textContent = `${this.state.timeRemaining}`;
+  }
+
+  startTimer(duration: number = 10): void {
+    this.state.timeRemaining = duration;
+    this.updateDisplay();
+
+    this.state.timerInterval = window.setInterval(() => {
+      this.state.timeRemaining--;
+      this.updateDisplay();
+
+      if (this.state.timeRemaining <= 0) {
+        this.stopTimer();
+        if (this.onTimeoutCallback) {
+          this.onTimeoutCallback();
+        }
+      }
+    }, 1000);
+  }
+
+  stopTimer(): void {
+    if (this.state.timerInterval !== null) {
+      clearInterval(this.state.timerInterval);
+      this.state.timerInterval = null;
+    }
+  }
+
+  getTimeRemaining(): number {
+    return this.state.timeRemaining;
+  }
+
+  isRunning(): boolean {
+    return this.state.timerInterval !== null;
+  }
+}
