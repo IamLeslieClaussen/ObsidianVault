@@ -1,47 +1,82 @@
-import { describe, it, expect } from "vitest";
-import {
-  calculatePercentage,
-  isAnswerCorrect,
-  getResultMessage,
-} from "./quizUtils";
+export function isAnswerCorrect(
+    selected: string,
+    answers: {text: string; correct: boolean}[]
+): boolean {
+    const found = answers.find((answer) => answer.text === selected);
+    return found? found.correct : false
+}
 
-describe("calculatePercentage", () => {
-  it("returns the correct percentage", () => {
-    //Arrange
-    const score = 3;
-    const total = 5;
+export function calculatePercentage(score: number, total: number){
+    if(total === 0) return 0;
+    return (score / total) * 100;
+}
 
-    //Act
-    const result = calculatePercentage(score, total);
+export function getResultMessage(percentage: number){
+    if (percentage === 100) {
+    return "great job";
+  } else if (percentage >= 80) {
+    return "well done";
+  } else {
+    return "keep practicing";
+  }
+}
 
-    //Assert
-    expect(result).toBe(60);
-  });
-});
+// Timer Management
+export interface TimerState {
+  timeRemaining: number;
+  timerInterval: number | null;
+}
 
-describe("isAnswerCorrect", () => {
-  it("returns true for correct answer", () => {
-    //Arrange
-    const answers = [
-      { text: "A", correct: false },
-      { text: "B", correct: true },
-    ];
+export class TimerManager {
+  private state: TimerState = {
+    timeRemaining: 10,
+    timerInterval: null
+  };
 
-    //Act
-    const result = isAnswerCorrect("B", answers);
+  private timerSpan: HTMLSpanElement;
+  private onTimeoutCallback: (() => void) | null = null;
 
-    //Assert
-    expect(result).toBe(true);
-  });
-});
+  constructor(timerElementId: string) {
+    this.timerSpan = document.getElementById(timerElementId) as HTMLSpanElement;
+  }
 
-describe("getResultMessage", () => {
-  it("returns 'great job' for 100%", () => {
-    //Arrange and Act
+  setOnTimeoutCallback(callback: () => void): void {
+    this.onTimeoutCallback = callback;
+  }
 
-    const result = getResultMessage(100);
+  private updateDisplay(): void {
+    this.timerSpan.textContent = `${this.state.timeRemaining}`;
+  }
 
-    //Assert
-    expect(result).toBe("great job");
-  });
-});
+  startTimer(duration: number = 10): void {
+    this.state.timeRemaining = duration;
+    this.updateDisplay();
+
+    this.state.timerInterval = window.setInterval(() => {
+      this.state.timeRemaining--;
+      this.updateDisplay();
+
+      if (this.state.timeRemaining <= 0) {
+        this.stopTimer();
+        if (this.onTimeoutCallback) {
+          this.onTimeoutCallback();
+        }
+      }
+    }, 1000);
+  }
+
+  stopTimer(): void {
+    if (this.state.timerInterval !== null) {
+      clearInterval(this.state.timerInterval);
+      this.state.timerInterval = null;
+    }
+  }
+
+  getTimeRemaining(): number {
+    return this.state.timeRemaining;
+  }
+
+  isRunning(): boolean {
+    return this.state.timerInterval !== null;
+  }
+}

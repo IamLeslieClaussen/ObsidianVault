@@ -1,10 +1,7 @@
-import "./style.css";
-import {
-  calculatePercentage,
-  isAnswerCorrect,
-  getResultMessage,
-} from "./quizUtils";
+import { calculatePercentage, getResultMessage, isAnswerCorrect, TimerManager } from './quizUtils';
+import './style.css';
 
+//Dom elements
 document.addEventListener("DOMContentLoaded", () => {
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
   const startButton = document.getElementById("start-btn") as HTMLButtonElement;
@@ -39,35 +36,35 @@ document.addEventListener("DOMContentLoaded", () => {
         { text: "London", correct: false },
         { text: "Berlin", correct: false },
         { text: "Paris", correct: true },
-        { text: "Madrid", correct: false },
-      ],
+        { text: "London", correct: false },
+      ]
     },
     {
-      questions: "Which planet is known as the Red Planet?",
+      questions: "What planet is known as the red Planet?",
       answers: [
         { text: "Venus", correct: false },
-        { text: "Mars", correct: true },
-        { text: "jupiter", correct: false },
+        { text: "Mars", correct: false },
+        { text: "Jupiter", correct: true },
         { text: "Saturn", correct: false },
-      ],
+      ]
+    },
+     {
+      questions: "What is the largest ocean on Earth?",
+      answers: [
+        { text: "Antlantic Ocean", correct: false },
+        { text: "Indian Ocean", correct: false },
+        { text: "Artic Ocean", correct: true },
+        { text: "Pacific Ocean", correct: false },
+      ]
     },
     {
       questions: "What is the largest ocean on Earth?",
       answers: [
         { text: "Antlantic Ocean", correct: false },
         { text: "Indian Ocean", correct: false },
-        { text: "Arctic Ocean", correct: false },
+        { text: "Artic Ocean", correct: false },
         { text: "Pacific Ocean", correct: true },
-      ],
-    },
-    {
-      questions: "What is the largest ocean on Earth?",
-      answers: [
-        { text: "Antlantic Ocean", correct: false },
-        { text: "Indian Ocean", correct: false },
-        { text: "Arctic Ocean", correct: false },
-        { text: "Pacific Ocean", correct: true },
-      ],
+      ]
     },
     {
       questions: "Which of these is Not a programming language?",
@@ -75,171 +72,114 @@ document.addEventListener("DOMContentLoaded", () => {
         { text: "Java", correct: false },
         { text: "Banana", correct: false },
         { text: "Python", correct: false },
-        { text: "javaScript", correct: true },
-      ],
-    },
-  ];
-
-  // reseting variables
-  let currentQuestionIndex = 0;
-  let score = 0;
-  let answersDisabled = false;
-  let timerInterval: number | null = null;
-  let timeRemaining = 10;
-
-  const startQuiz = () => {
-    startScreen.classList.add("hidden");
-    quizScreen.classList.remove("hidden");
-    scoreSpan.innerText = "0";
-
-    showQuestions();
-  };
-
-  startButton.addEventListener("click", startQuiz);
-  restartButton.addEventListener("click", restartButton);
-
-  // set Timer
-
-  const updateTimerDisplay = () => {
-    timerSpan.textContent = `${timeRemaining}`;
-  }
-
-  const startTimer = () => {
-    timeRemaining = 10;
-    updateTimerDisplay();
-
-    timerInterval = window.setInterval(() => {
-      timeRemaining--;
-      updateTimerDisplay();
-
-      if(timeRemaining <= 0){
-        clearInterval(timerInterval!);
-        handleTimeout();
-      }
-    }, 1000);
-  };
-
-  // handle timeout
-  const handleTimeout = () => {
-    answersDisabled = true;
-
-    // Highlight the correct answer
-    Array.from(answersContainer.children).forEach((button) => {
-      if(button.dataset.correct === "true"){
-        button.classList.add("correct")
-      }
-    })
-
-    //Move to next questions after a showing correct answer
-    setTimeout(() => {
-      currentQuestionIndex++;
-
-      if(currentQuestionIndex < quizQuestions.length){
-        showQuestions();
-        startTimer();
-      } else {
-        showResults();
-      }
-  }, 1000);
-  }
-
-
-
-
-
-
-  const showQuestions = () => {
-    answersDisabled = false;
-    answersContainer.innerHTML = "";
-
-    //startTimer
-    startTimer();
-
-    const currentQuestion = quizQuestions[currentQuestionIndex];
-    questionHeader.innerHTML = currentQuestion.questions;
-
-    currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
-
-    currentQuestion.answers.forEach((answer) => {
-      const answerButton = document.createElement("button");
-      answerButton.textContent = answer.text;
-      answerButton.classList.add("answer-btn");
-
-      answerButton.dataset.correct = answer.correct.toString();
-      answersContainer.appendChild(answerButton);
-
-      answerButton.addEventListener("click", selectAnswer);
-    });
-  };
-
-  function selectAnswer(event: MouseEvent) {
-    console.log("answer Clicked");
-
-    if (answersDisabled) return;
-
-    answersDisabled = true;
-
-    //clear the timer
-    if(timerInterval) {
-      clearInterval(timerInterval);
-      timerInterval = null
+        { text: "Javascript", correct: true },
+      ]
     }
+  ]
+ // reset variables 
 
-    const selectedButton = event.target as HTMLButtonElement;
-    const selectedText = selectedButton.textContent || "";
-    const currentAnswers = quizQuestions[currentQuestionIndex].answers;
-    const isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+ let score = 0;
+ let currentQuestionIndex = 0;
+ let answersDisabled: boolean = false;
+ const timerManager = new TimerManager('timer');
 
-    Array.from(answersContainer.children).forEach((button) => {
-      if (button.dataset.correct === "true") {
-        button.classList.add("correct");
-      } else if (button === selectedButton) {
-        button.classList.add("incorrect");
-      }
-    });
-    if (isCorrect) {
-      score++;
-      scoreSpan.textContent = score.toString();
+ const startQuiz = () => {
+  startScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  scoreSpan.innerText = '0';
+
+  showQuestions();
+ }
+
+ const showQuestions = () => {
+  answersDisabled = false;
+  answersContainer.innerHTML = '';
+
+  timerManager.startTimer(10);
+
+  const currentQuestion = quizQuestions[currentQuestionIndex];
+  questionHeader.innerHTML = currentQuestion.questions;
+
+  currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
+
+  currentQuestion.answers.forEach((answer) => {
+    const answerButton = document.createElement('button');
+    answerButton.textContent = answer.text;
+    answerButton.classList.add('answer-btn');
+
+    answerButton.dataset.correct = answer.correct.toString();
+    answersContainer.appendChild(answerButton);
+
+    answerButton.addEventListener('click', selectAnswer);
+  });
+ };
+
+ function selectAnswer(event: MouseEvent){
+  console.log('answer Clicked')
+
+  if(answersDisabled) return;
+
+  answersDisabled = true;
+
+  // stop the timer
+  timerManager.stopTimer();
+
+  const selectedButton = event.target as HTMLButtonElement;
+  const selectedText = selectedButton.textContent || '';
+  const currentAnswers = quizQuestions[currentQuestionIndex].answers;
+  const isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+
+  Array.from(answersContainer.children).forEach((button) => {
+    if(button.dataset.correct === 'true'){
+      button.classList.add('correct');
+    } else if (button === selectedButton) {
+      button.classList.add('incorrect');
     }
+  });
 
-    //check if there are more questions
-    setTimeout(() => {
-      currentQuestionIndex++;
-
-      if (currentQuestionIndex < quizQuestions.length) {
-        showQuestions();
-      } else {
-        showResults();
-      }
-    }, 1000);
+  if(isCorrect){
+    score++;
+    scoreSpan.innerText = score.toString();
   }
 
-  function showResults() {
+  // check if there are more questions
+  setTimeout(() => {
+    currentQuestionIndex++;
 
-    if (timerInterval) {
-    clearInterval(timerInterval);
-    timerInterval = null;
-  }
+    if(currentQuestionIndex < quizQuestions.length){
+      showQuestions()
+    } else {
+      showResults();
+    }
+  }, 1000)
+ }
 
-    quizScreen.classList.add("hidden");
-    endScreen.classList.remove("hidden");
+ function showResults() {
+  timerManager.stopTimer();
 
-    finalScore.textContent = score.toString();
-    maxScore.textContent = quizQuestions.length.toString();
+  quizScreen.classList.add('hidden');
+  endScreen.classList.remove('hidden');
 
-    const percentage = calculatePercentage(score, quizQuestions.length);
+  finalScore.textContent = score.toString();
+  maxScore.textContent = quizQuestions.length.toString();
 
-    finalMessage.textContent = getResultMessage(percentage);
-  }
+  const percentage = calculatePercentage(score, quizQuestions.length);
 
-  function restartQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
+  finalMessage.textContent = getResultMessage(percentage);
+ }
 
-    endScreen.classList.add("hidden");
-    startScreen.classList.remove("hidden");
-  }
+ function restartQuiz() {
+  timerManager.stopTimer();
+  currentQuestionIndex = 0;
+  score = 0;
+  answersDisabled = false;
+  scoreSpan.innerText = '0';
 
-  startButton.addEventListener("click", startQuiz);
-  restartButton.addEventListener("click", restartQuiz);
+  endScreen.classList.add('hidden');
+  quizScreen.classList.add('hidden');
+  startScreen.classList.remove('hidden');
+ }
+
+ startButton.addEventListener('click', startQuiz);
+ restartButton.addEventListener('click', restartQuiz);
 });
