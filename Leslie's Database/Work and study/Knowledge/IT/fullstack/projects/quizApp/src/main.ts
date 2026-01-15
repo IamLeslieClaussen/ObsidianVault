@@ -1,7 +1,16 @@
 import { calculatePercentage, getResultMessage, isAnswerCorrect, TimerManager } from './quizUtils';
-import './style.css'
+import './style.css';
 
-document.addEventListener("DOMContentLoaded", () => {
+let quizQuestions: any[] = [];
+
+
+async function loadQuestions() {
+  const response = await fetch('/quizquestions.json');
+  quizQuestions = await response.json();
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadQuestions();
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
   const startButton = document.getElementById("start-btn") as HTMLButtonElement;
   const quizScreen = document.getElementById("quiz-screen") as HTMLDivElement;

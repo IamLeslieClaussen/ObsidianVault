@@ -1,0 +1,119 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "answers": [
+      { "text": "London", "correct": false },
+      { "text": "Berlin", "correct": false },
+      { "text": "Paris", "correct": true },
+      { "text": "Madrid", "correct": false }
+    ]
+  },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "answers": [
+        { "text": "Earth", "correct": false },
+        { "text": "Mars", "correct": true },
+        { "text": "Jupiter", "correct": false },
+        { "text": "Saturn", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "answers": [
+        { "text": "Atlantic Ocean", "correct": false },
+        { "text": "Indian Ocean", "correct": false },
+        { "text": "Arctic Ocean", "correct": false },
+        { "text": "Pacific Ocean", "correct": true }
+        ]
+    },
+    {
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "answers": [
+        { "text": "Charles Dickens", "correct": false },
+        { "text": "William Shakespeare", "correct": true },
+        { "text": "Mark Twain", "correct": false },
+        { "text": "Jane Austen", "correct": false }
+        ]
+    },
+    {
+        "question": "What is the chemical symbol for water?",
+        "answers": [
+        { "text": "O2", "correct": false },
+        { "text": "H2O", "correct": true },
+        { "text": "CO2", "correct": false },
+        { "text": "NaCl", "correct": false }
+        ]
+    },
+    {
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "answers": [
+        { "text": "China", "correct": false },
+        { "text": "Japan", "correct": true },
+        { "text": "Thailand", "correct": false },
+        { "text": "South Korea", "correct": false }
+        ]
+    },  
+    {
+        "question": "What is the hardest natural substance on Earth?",
+        "answers": [
+        { "text": "Gold", "correct": false },
+        { "text": "Iron", "correct": false },
+        { "text": "Diamond", "correct": true },
+        { "text": "Silver", "correct": false }
+        ]
+    },  
+    {
+        "question": "Who painted the Mona Lisa?",
+        "answers": [
+        { "text": "Vincent van Gogh", "correct": false },
+        { "text": "Pablo Picasso", "correct": false },
+        { "text": "Leonardo da Vinci", "correct": true },
+        { "text": "Claude Monet", "correct": false }
+        ]
+    },  
+    {
+        "question": "What is the smallest prime number?",
+        "answers": [
+        { "text": "0", "correct": false },
+        { "text": "1", "correct": false },
+        { "text": "2", "correct": true },
+        { "text": "3", "correct": false }
+        ]
+    },  
+    {
+        "question": "Which element has the chemical symbol 'Au'?",
+        "answers": [
+        { "text": "Silver", "correct": false },
+        { "text": "Oxygen", "correct": false },
+        { "text": "Gold", "correct": true },
+        { "text": "Argon", "correct": false }
+        ]
+    },  
+    {
+        "question": "What is the largest mammal in the world?",
+        "answers": [
+        { "text": "Elephant", "correct": false },
+        { "text": "Blue Whale", "correct": true },
+        { "text": "Giraffe", "correct": false },
+        { "text": "Hippopotamus", "correct": false }
+        ]
+    },  
+    {
+        "question": "In which year did the Titanic sink?",
+        "answers": [
+        { "text": "1912", "correct": true },
+        { "text": "1905", "correct": false },
+        { "text": "1918", "correct": false },
+        { "text": "1920", "correct": false }
+        ]
+    },  
+    {
+        "question": "What is the main ingredient in traditional Japanese miso soup?",
+        "answers": [
+        { "text": "Rice", "correct": false },
+        { "text": "Soybeans", "correct": true },
+        { "text": "Seaweed", "correct": false },
+        { "text": "Fish", "correct": false }
+        ]
+    }
+]
