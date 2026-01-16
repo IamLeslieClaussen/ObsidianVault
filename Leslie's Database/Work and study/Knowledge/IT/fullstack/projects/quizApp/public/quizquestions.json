@@ -1,6 +1,14 @@
 [
+{
+"type": "true-false",
+"questions": "The earth is flat.",
+"options": ["True", "False"],
+"answer": "False"
+},
+
+
   {
-    "question": "What is the capital of France?",
+    "questions": "What is the capital of France?",
     "answers": [
       { "text": "London", "correct": false },
       { "text": "Berlin", "correct": false },
@@ -9,7 +17,7 @@
     ]
   },
     {
-        "question": "Which planet is known as the Red Planet?",
+        "questions": "Which planet is known as the Red Planet?",
         "answers": [
         { "text": "Earth", "correct": false },
         { "text": "Mars", "correct": true },
@@ -18,7 +26,7 @@
         ]
     },
     {
-        "question": "What is the largest ocean on Earth?",
+        "questions": "What is the largest ocean on Earth?",
         "answers": [
         { "text": "Atlantic Ocean", "correct": false },
         { "text": "Indian Ocean", "correct": false },
@@ -27,7 +35,7 @@
         ]
     },
     {
-        "question": "Who wrote 'Romeo and Juliet'?",
+        "questions": "Who wrote 'Romeo and Juliet'?",
         "answers": [
         { "text": "Charles Dickens", "correct": false },
         { "text": "William Shakespeare", "correct": true },
@@ -36,7 +44,7 @@
         ]
     },
     {
-        "question": "What is the chemical symbol for water?",
+        "questions": "What is the chemical symbol for water?",
         "answers": [
         { "text": "O2", "correct": false },
         { "text": "H2O", "correct": true },
@@ -45,7 +53,7 @@
         ]
     },
     {
-        "question": "Which country is known as the Land of the Rising Sun?",
+        "questions": "Which country is known as the Land of the Rising Sun?",
         "answers": [
         { "text": "China", "correct": false },
         { "text": "Japan", "correct": true },
@@ -54,7 +62,7 @@
         ]
     },  
     {
-        "question": "What is the hardest natural substance on Earth?",
+        "questions": "What is the hardest natural substance on Earth?",
         "answers": [
         { "text": "Gold", "correct": false },
         { "text": "Iron", "correct": false },
@@ -63,7 +71,7 @@
         ]
     },  
     {
-        "question": "Who painted the Mona Lisa?",
+        "questions": "Who painted the Mona Lisa?",
         "answers": [
         { "text": "Vincent van Gogh", "correct": false },
         { "text": "Pablo Picasso", "correct": false },
@@ -72,7 +80,7 @@
         ]
     },  
     {
-        "question": "What is the smallest prime number?",
+        "questions": "What is the smallest prime number?",
         "answers": [
         { "text": "0", "correct": false },
         { "text": "1", "correct": false },
@@ -81,7 +89,7 @@
         ]
     },  
     {
-        "question": "Which element has the chemical symbol 'Au'?",
+        "questions": "Which element has the chemical symbol 'Au'?",
         "answers": [
         { "text": "Silver", "correct": false },
         { "text": "Oxygen", "correct": false },
@@ -90,7 +98,7 @@
         ]
     },  
     {
-        "question": "What is the largest mammal in the world?",
+        "questions": "What is the largest mammal in the world?",
         "answers": [
         { "text": "Elephant", "correct": false },
         { "text": "Blue Whale", "correct": true },
@@ -99,7 +107,7 @@
         ]
     },  
     {
-        "question": "In which year did the Titanic sink?",
+        "questions": "In which year did the Titanic sink?",
         "answers": [
         { "text": "1912", "correct": true },
         { "text": "1905", "correct": false },
@@ -108,7 +116,7 @@
         ]
     },  
     {
-        "question": "What is the main ingredient in traditional Japanese miso soup?",
+        "questions": "What is the main ingredient in traditional Japanese miso soup?",
         "answers": [
         { "text": "Rice", "correct": false },
         { "text": "Soybeans", "correct": true },
@@ -116,4 +124,5 @@
         { "text": "Fish", "correct": false }
         ]
     }
+
 ]

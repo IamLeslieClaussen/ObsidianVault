@@ -183,3 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
  startButton.addEventListener('click', startQuiz);
  restartButton.addEventListener('click', restartQuiz);
 });
+
+
+let quizQuestions: any[] = [];
+
+
+
+async function loadQuestions() {
+  let response = await fetch('/quizquestions.json');
+  quizQuestions = await response.json();
+}

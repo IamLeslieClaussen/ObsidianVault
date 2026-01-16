@@ -4,9 +4,18 @@ import './style.css';
 let quizQuestions: any[] = [];
 
 
+
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
 async function loadQuestions() {
   const response = await fetch('/quizquestions.json');
   quizQuestions = await response.json();
+  shuffleArray(quizQuestions);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -27,53 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const currentQuestionSpan = document.getElementById("ques-number") as HTMLSpanElement;
   const finalMessage = document.getElementById("final-message") as HTMLDivElement;
 
-  const quizQuestions = [
-    {
-      questions: "What is the capital of France",
-      answers: [
-        {text: 'London', correct: false},
-        {text: 'Berlin', correct: false},
-        {text: 'Paris', correct: false},
-        {text: 'London', correct: false},
-      ]
-    },
-     {
-      questions: "What is the capital of France",
-      answers: [
-        {text: 'London', correct: false},
-        {text: 'Berlin', correct: false},
-        {text: 'Paris', correct: false},
-        {text: 'London', correct: false},
-      ]
-    },
-     {
-      questions: "What is the capital of France",
-      answers: [
-        {text: 'London', correct: false},
-        {text: 'Berlin', correct: false},
-        {text: 'Paris', correct: false},
-        {text: 'London', correct: false},
-      ]
-    },
-     {
-      questions: "What is the capital of France",
-      answers: [
-        {text: 'London', correct: false},
-        {text: 'Berlin', correct: false},
-        {text: 'Paris', correct: false},
-        {text: 'London', correct: false},
-      ]
-    },
-     {
-      questions: "What is the capital of France",
-      answers: [
-        {text: 'London', correct: false},
-        {text: 'Berlin', correct: false},
-        {text: 'Paris', correct: false},
-        {text: 'London', correct: false},
-      ]
-    }
-  ];
+  
 
   //reset Variables
   let score: number = 0;
@@ -118,36 +81,50 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const currentQuestion = quizQuestions[currentQuestionIndex];
     questionHeader.innerHTML = currentQuestion.questions;
-
     currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
 
-    currentQuestion.answers.forEach((answer) => {
-      const answerButton = document.createElement('button');
-      answerButton.textContent = answer.text;
-      answerButton.classList.add('answer-btn');
-
-      answerButton.dataset.correct = answer.correct.toString();
-      answersContainer.appendChild(answerButton);
-
-      answerButton.addEventListener("click", selectAnswer);
-    })
-    
+    //check if it's a true/false question
+    if(currentQuestion.type === 'true-false') {
+      ['True', 'False'].forEach((option: string) => {
+        const answerButton = document.createElement('button');
+        answerButton.textContent = option;
+        answerButton.classList.add('answer-btn');
+        answerButton.dataset.correct = String(option === currentQuestion.answer);
+        answersContainer.appendChild(answerButton);
+        answerButton.addEventListener('click', selectAnswer);
+      });
+    } else {
+      // Default: multiple-choice
+      currentQuestion.answers.forEach((answer: { text: string; correct: boolean }) => {
+        const answerButton = document.createElement('button');
+        answerButton.textContent = answer.text;
+        answerButton.classList.add('answer-btn');
+        answerButton.dataset.correct = String(answer.correct);
+        answersContainer.appendChild(answerButton);
+        answerButton.addEventListener("click", selectAnswer);
+      });
+    }
   };
-
   function selectAnswer(event: MouseEvent) {
     console.log('answer Clicked')
 
     if(answersDisabled) return;
-
     answersDisabled = true;
-
-    //stop the timer
     timerManager.stopTimer();
 
     const selectedButton = event.target as HTMLButtonElement;
     const selectedText = selectedButton.textContent || '';
-    const currentAnswers = quizQuestions[currentQuestionIndex].answers;
-    const isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+    let isCorrect = false;
+
+    if (currentQuestion.type === 'true-false') {
+      // For true/false, compare selectedText to answer
+      isCorrect = selectedText === currentQuestion.answer;
+    } else {
+      // For multiple-choice, use isAnswerCorrect as before
+      const currentAnswers = currentQuestion.answers;
+      isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+    }
 
     Array.from(answersContainer.children).forEach((button) => {
       const btn = button as HTMLButtonElement;
@@ -163,17 +140,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       scoreSpan.innerText = score.toString();
     }
 
-    //check if there are more questions
-
     setTimeout(() => {
       currentQuestionIndex++;
-
       if(currentQuestionIndex < quizQuestions.length){
-        showQuestions()
+        showQuestions();
       } else {
-        showResult()
+        showResult();
       }
-    }, 1000)
+    }, 1000);
   }
 
   function showResult() {
@@ -206,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   startButton.addEventListener('click', startQuiz);
   restartButton.addEventListener('click', restartQuiz);
   //restartButton.addEventListener('click', restartQuiz);
-  
+});
   
 
-})
+
