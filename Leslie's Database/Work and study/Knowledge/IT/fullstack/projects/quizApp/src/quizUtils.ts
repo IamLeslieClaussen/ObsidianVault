@@ -1,27 +1,3 @@
-export function isAnswerCorrect(
-    selected: string,
-    answers: {text: string, correct: boolean}[]
-): boolean {
-    const found = answers.find((answer) => answer.text = selected);
-    return found? found.correct : false
-}
-
-export function calculatePercentage(score: number, total: number){
-    if(total === 0) return 0;
-    return (score / total) * 100;
-}
-
-export function getResultMessage(percentage: number){
-    if(percentage === 100) {
-        return "great job";
-    } else if(percentage >= 80){
-        return "well done";
-    } else {
-        return "keep practicing";
-    }
-}
-
-// Timer Manager
 export interface TimerState {
     timeRemaining: number;
     timerInterval: number | null;
@@ -60,7 +36,7 @@ export class TimerManager {
             if(this.state.timeRemaining <= 0){
                 this.stopTimer();
                 if(this.onTimeoutCallback){
-                    this.onTimeoutCallback()
+                    this.onTimeoutCallback();
                 }
             }
         }, 1000)
@@ -72,14 +48,36 @@ export class TimerManager {
             this.state.timerInterval = null;
         }
     }
-    
+
     getTimeRemaining(): number {
         return this.state.timeRemaining;
     }
 
     isRunning(): boolean {
-        return this.state.timerInterval !== null;
+        return this.state.timerInterval !== null
     }
+}
 
 
+export function isAnswerCorrect(
+    selected: string,
+    answers: {text: string, correct: boolean}[]
+): boolean {
+    const found = answers.find((answer) => answer.text === selected);
+    return found? found.correct : false
+}
+
+export function calculatePercentage(score: number, total: number){
+    if(total === 0) return 0;
+    return(score / total) * 100;
+}
+
+export function getResultMessage(percentage: number){
+    if(percentage === 100) {
+        return "great job";
+    } else if(percentage >= 80){
+        return "well done";
+    } else {
+        return "keep practicing";
+    }
 }

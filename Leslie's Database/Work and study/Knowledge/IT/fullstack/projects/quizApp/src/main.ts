@@ -1,12 +1,11 @@
-import { calculatePercentage, getResultMessage, isAnswerCorrect, TimerManager } from './quizUtils';
+import { TimerManager, isAnswerCorrect, calculatePercentage, getResultMessage  } from "./quizUtils";
+
 import './style.css';
 
 let quizQuestions: any[] = [];
 
-
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
+function schuffleArray(array: any[]){
+  for (let i = array.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
@@ -14,11 +13,11 @@ function shuffleArray(array: any[]) {
 
 async function loadQuestions() {
   const response = await fetch('/quizquestions.json');
-  quizQuestions = await response.json();
-  shuffleArray(quizQuestions);
+  quizQuestions = await response.json()
+  schuffleArray(quizQuestions);
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   await loadQuestions();
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
   const startButton = document.getElementById("start-btn") as HTMLButtonElement;
@@ -34,42 +33,43 @@ document.addEventListener("DOMContentLoaded", async () => {
   const questionHeader = document.getElementById("ques-header") as HTMLHeadingElement;
   const answersContainer = document.getElementById("answers-container") as HTMLDivElement;
   const currentQuestionSpan = document.getElementById("ques-number") as HTMLSpanElement;
+  const maxQuestionSpan = document.getElementById("max-ques") as HTMLSpanElement;
   const finalMessage = document.getElementById("final-message") as HTMLDivElement;
+  const progressBar = document.getElementById("progress-bar") as HTMLDivElement;
 
-  
-
-  //reset Variables
+  //reset variables
   let score: number = 0;
   let currentQuestionIndex: number = 0;
-  let answersDisabled: boolean = false;
+  let answersDisabled: Boolean = false;
   const timerManager = new TimerManager('timer')
 
-  // Callback für Timer-Timeout: gehe zur nächsten Frage oder zeige das Ergebnis
+
   timerManager.setOnTimeoutCallback(() => {
-    if (answersDisabled) return;
+    if(answersDisabled) return;
     answersDisabled = true;
-    // Markiere alle Antworten als falsch
-    Array.from(answersContainer.children).forEach((button) => {
-      const btn = button as HTMLButtonElement;
-      if (btn.dataset.correct === 'true') {
-        btn.classList.add('correct');
-      }
-    });
-    setTimeout(() => {
-      currentQuestionIndex++;
-      if (currentQuestionIndex < quizQuestions.length) {
-        showQuestions();
-      } else {
-        showResult();
-      }
-    }, 1000);
+
+   Array.from(answersContainer.children).forEach((button) => {
+    const btn = button as HTMLButtonElement;
+    if(btn.dataset.correct === 'true'){
+      btn.classList.add('correct');
+    }
+   });
+
+   setTimeout(() => {
+    currentQuestionIndex++;
+    if(currentQuestionIndex < quizQuestions.length){
+      showQuestions();
+    } else {
+      showResult();
+    }
+   }, 1000);
   });
 
   const startQuiz = () => {
     startScreen.classList.add('hidden');
     quizScreen.classList.remove('hidden');
     scoreSpan.innerText = '0';
-
+    maxQuestionSpan.textContent = quizQuestions.length.toString();
     showQuestions();
   }
 
@@ -83,8 +83,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     questionHeader.innerHTML = currentQuestion.questions;
     currentQuestionSpan.textContent = (currentQuestionIndex + 1).toString();
 
+    // Update progress bar
+    if (progressBar && quizQuestions.length > 0) {
+      const progressPercent = ((currentQuestionIndex) / quizQuestions.length) * 100;
+      progressBar.style.width = `${progressPercent}%`;
+    }
+
     //check if it's a true/false question
-    if(currentQuestion.type === 'true-false') {
+    if(currentQuestion.type === 'true-false'){
       ['True', 'False'].forEach((option: string) => {
         const answerButton = document.createElement('button');
         answerButton.textContent = option;
@@ -94,43 +100,42 @@ document.addEventListener("DOMContentLoaded", async () => {
         answerButton.addEventListener('click', selectAnswer);
       });
     } else {
-      // Default: multiple-choice
-      currentQuestion.answers.forEach((answer: { text: string; correct: boolean }) => {
+      //Default: multiple Choice
+      currentQuestion.answers.forEach((answer: {text: string; correct: boolean}) => {
         const answerButton = document.createElement('button');
         answerButton.textContent = answer.text;
         answerButton.classList.add('answer-btn');
         answerButton.dataset.correct = String(answer.correct);
         answersContainer.appendChild(answerButton);
-        answerButton.addEventListener("click", selectAnswer);
-      });
+        answerButton.addEventListener('click', selectAnswer);
+      })
     }
   };
+
   function selectAnswer(event: MouseEvent) {
     console.log('answer Clicked')
 
     if(answersDisabled) return;
     answersDisabled = true;
-    timerManager.stopTimer();
+    timerManager.stopTimer()
 
     const selectedButton = event.target as HTMLButtonElement;
     const selectedText = selectedButton.textContent || '';
     const currentQuestion = quizQuestions[currentQuestionIndex];
-    let isCorrect = false;
+    let isCorrect = false; 
 
-    if (currentQuestion.type === 'true-false') {
-      // For true/false, compare selectedText to answer
-      isCorrect = selectedText === currentQuestion.answer;
+    if(currentQuestion.type === 'true-false') {
+      isCorrect = selectedText.trim().toLowerCase() === String(currentQuestion.answer).trim().toLowerCase();
     } else {
-      // For multiple-choice, use isAnswerCorrect as before
       const currentAnswers = currentQuestion.answers;
-      isCorrect = isAnswerCorrect(selectedText, currentAnswers);
+      isCorrect = isAnswerCorrect(selectedText, currentAnswers)
     }
 
     Array.from(answersContainer.children).forEach((button) => {
       const btn = button as HTMLButtonElement;
-      if (btn.dataset.correct === 'true') {
+      if(btn.dataset.correct === 'true'){
         btn.classList.add('correct');
-      } else if (btn === selectedButton) {
+      } else if (btn === selectedButton){
         btn.classList.add('incorrect');
       }
     });
@@ -145,9 +150,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       if(currentQuestionIndex < quizQuestions.length){
         showQuestions();
       } else {
-        showResult();
+        showResult()
       }
-    }, 1000);
+    }, 1000)
+
   }
 
   function showResult() {
@@ -156,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     quizScreen.classList.add('hidden');
     endScreen.classList.remove('hidden');
 
-    finalScore.textContent = score.toString();
+    finalScore.textContent = score.toString()
     maxScore.textContent = quizQuestions.length.toString();
 
     const percentage = calculatePercentage(score, quizQuestions.length);
@@ -176,11 +182,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     startScreen.classList.remove('hidden');
 
   }
-  
   startButton.addEventListener('click', startQuiz);
-  restartButton.addEventListener('click', restartQuiz);
-  //restartButton.addEventListener('click', restartQuiz);
-});
+   restartButton.addEventListener('click', restartQuiz);
   
-
-
+})
