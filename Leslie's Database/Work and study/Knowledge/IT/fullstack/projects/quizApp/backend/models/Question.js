@@ -6,12 +6,13 @@ const answerSchema = new mongoose.Schema({
     correct: Boolean
 });
 
-const questionsSchema = new mongoose.Schema({
-    question: {type: String, required: true },
-    type: { type: String, required: true},
+const questionSchema = new mongoose.Schema({
+    question: {type: String, require: true},
+    type: {type: String, required: true},
     answers: [answerSchema],
-    category: String,
-    difficulty: String
+    catergory: String,
+    difficuly: String
+
 });
 
-module.exports = mongoose.model('Question', questionsSchema);
+module.exports = mongoose.model('Question', questionSchema,)
