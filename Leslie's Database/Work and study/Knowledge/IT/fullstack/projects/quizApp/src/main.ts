@@ -19,6 +19,7 @@ async function loadQuestions() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadQuestions();
+  const loginScreen = document.getElementById("login-screen") as HTMLDivElement
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
   const startButton = document.getElementById("start-btn") as HTMLButtonElement;
   const quizScreen = document.getElementById("quiz-screen") as HTMLDivElement;
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const restartButton = document.getElementById(
     "restart-btn"
   ) as HTMLButtonElement;
+  
   // Nicht genutzte Variablen entfernt
   const maxScore = document.getElementById("max-score") as HTMLSpanElement;
   const finalScore = document.getElementById("final-score") as HTMLSpanElement;
@@ -43,6 +45,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   let answersDisabled: Boolean = false;
   const timerManager = new TimerManager('timer')
 
+
+  function onLogin() {
+    
+  }
 
   timerManager.setOnTimeoutCallback(() => {
     if(answersDisabled) return;
