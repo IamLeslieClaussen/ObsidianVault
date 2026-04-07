@@ -3,9 +3,11 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const questionRoutes = require('./routes/questionRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 app.use('/api', questionRoutes);
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/quizApp';

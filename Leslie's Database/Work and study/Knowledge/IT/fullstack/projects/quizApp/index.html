@@ -8,8 +8,18 @@
   </head>
   <body>
     <div class="bg-white rounded w-full max-w-150 overflow-hidden relative shadow-2xl p-5">
-      <div id="login-screen" class="flex flex-col gap-4"></div>
-      <div id="start-screen" class=" flex flex-col items-center gap-4">
+      <div id="login-screen" class="flex flex-col gap-4">
+        <h2 class="text-3xl font-bold text-orange-500 text-center">Quiz Time!</h2>
+        <p class="text-center text-gray-500">Login or create an account to play</p>
+        <input id="username-input" type="text" placeholder="Username" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+        <input id="password-input" type="password" placeholder="Password" class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500" />
+        <p id="login-error" class="text-red-500 text-sm hidden"></p>
+        <div class="flex gap-3">
+          <button id="login-btn" class="flex-1 bg-amber-600 text-white px-6 py-2 rounded hover:cursor-pointer hover:bg-amber-800">Login</button>
+          <button id="register-btn" class="flex-1 border border-amber-600 text-amber-600 px-6 py-2 rounded hover:cursor-pointer hover:bg-amber-50">Create Account</button>
+        </div>
+      </div>
+      <div id="start-screen" class="flex flex-col items-center gap-4 hidden">
         <div>
           <h2 class="text-4xl font-bold text-orange-500">Quiz Time!</h2>
         </div>

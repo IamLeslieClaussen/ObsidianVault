@@ -19,7 +19,12 @@ async function loadQuestions() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await loadQuestions();
-  const loginScreen = document.getElementById("login-screen") as HTMLDivElement
+  const loginScreen = document.getElementById("login-screen") as HTMLDivElement;
+  const loginBtn = document.getElementById("login-btn") as HTMLButtonElement;
+  const registerBtn = document.getElementById("register-btn") as HTMLButtonElement;
+  const usernameInput = document.getElementById("username-input") as HTMLInputElement;
+  const passwordInput = document.getElementById("password-input") as HTMLInputElement;
+  const loginError = document.getElementById("login-error") as HTMLParagraphElement;
   const startScreen = document.getElementById("start-screen") as HTMLDivElement;
   const startButton = document.getElementById("start-btn") as HTMLButtonElement;
   const quizScreen = document.getElementById("quiz-screen") as HTMLDivElement;
@@ -46,8 +51,47 @@ document.addEventListener('DOMContentLoaded', async () => {
   const timerManager = new TimerManager('timer')
 
 
+  function showLoginError(message: string) {
+    loginError.textContent = message;
+    loginError.classList.remove('hidden');
+  }
+
   function onLogin() {
-    
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+    if (!username || !password) {
+      showLoginError('Please enter username and password.');
+      return;
+    }
+    const users: Record<string, string> = JSON.parse(localStorage.getItem('quizUsers') || '{}');
+    if (!users[username]) {
+      showLoginError('Account not found. Please create an account first.');
+      return;
+    }
+    if (users[username] !== password) {
+      showLoginError('Incorrect password.');
+      return;
+    }
+    loginScreen.classList.add('hidden');
+    startScreen.classList.remove('hidden');
+  }
+
+  function onRegister() {
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
+    if (!username || !password) {
+      showLoginError('Please enter a username and password.');
+      return;
+    }
+    const users: Record<string, string> = JSON.parse(localStorage.getItem('quizUsers') || '{}');
+    if (users[username]) {
+      showLoginError('Username already exists. Please login.');
+      return;
+    }
+    users[username] = password;
+    localStorage.setItem('quizUsers', JSON.stringify(users));
+    loginScreen.classList.add('hidden');
+    startScreen.classList.remove('hidden');
   }
 
   timerManager.setOnTimeoutCallback(() => {
@@ -188,7 +232,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     startScreen.classList.remove('hidden');
 
   }
+  loginBtn.addEventListener('click', onLogin);
+  registerBtn.addEventListener('click', onRegister);
   startButton.addEventListener('click', startQuiz);
-   restartButton.addEventListener('click', restartQuiz);
+  restartButton.addEventListener('click', restartQuiz);
   
 })
