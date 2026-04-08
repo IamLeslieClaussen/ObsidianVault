@@ -10,8 +10,8 @@ const questionSchema = new mongoose.Schema({
     question: {type: String, require: true},
     type: {type: String, required: true},
     answers: [answerSchema],
-    catergory: String,
-    difficuly: String
+    category: String,
+    difficulty: String
 
 });
 

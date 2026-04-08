@@ -218,6 +218,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const percentage = calculatePercentage(score, quizQuestions.length);
 
     finalMessage.textContent = getResultMessage(percentage);
+
+    const token = localStorage.getItem('token');
+    if(token) {
+      fetch('/api/results', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ score: score})
+      });
+    }
   }
 
   function restartQuiz() {
